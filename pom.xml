@@ -49,7 +49,7 @@
                             <goal>build</goal>
                         </goals>
                         <configuration>
-                            <appClass>hu.tilos.radio.backend.BasedataStarter</appClass>
+                            <appClass>hu.tilos.radio.backend.UtilStarter</appClass>
                         </configuration>
                     </execution>
                 </executions>
