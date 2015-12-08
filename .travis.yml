@@ -32,3 +32,6 @@ addons:
     build_command_prepend: "mvn clean"
     build_command:   "mvn -DskipTests=true compile"
     branch_pattern: coverity_scan
+
+notifications:
+  webhooks: http://test.tilos.hu/notificationtest
