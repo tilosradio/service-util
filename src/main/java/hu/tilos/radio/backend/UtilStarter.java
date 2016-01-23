@@ -6,19 +6,16 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.matcher.Matchers;
-import com.mongodb.DB;
-import hu.radio.tilos.model.Role;
-import hu.tilos.radio.backend.spark.*;
+import hu.tilos.radio.backend.spark.GuiceConfigurationListener;
+import hu.tilos.radio.backend.spark.JsonTransformer;
+import hu.tilos.radio.backend.spark.SparkDefaults;
 import hu.tilos.radio.backend.status.StatusService;
-import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.concurrent.duration.Duration;
 import scala.concurrent.duration.FiniteDuration;
 import spark.ResponseTransformer;
-import spark.Route;
 
-import javax.validation.Validator;
 import java.util.List;
 
 import static spark.Spark.get;
@@ -77,18 +74,6 @@ public class UtilStarter {
         });
 
 
-    }
-
-    private Route authorized(Role role, AuthorizedRoute authorizedRoute) {
-        Authorized authorized = new Authorized(role, authorizedRoute);
-        injector.injectMembers(authorized);
-        return authorized;
-    }
-
-    private Route authorized(String permission, AuthorizedRoute authorizedRoute) {
-        Authorized authorized = new Authorized(permission, authorizedRoute);
-        injector.injectMembers(authorized);
-        return authorized;
     }
 
 
