@@ -2,6 +2,7 @@ package hu.tilos.radio.backend.status;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -9,12 +10,13 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
 public class StatusService {
 
     private Gson gson = new GsonBuilder().create();
 
     public List<String> getLiveSources() {
-        try (InputStreamReader urlReader = new InputStreamReader(new URL("http://stream.tilos.hu/status-json.xsl").openStream())) {
+        try (InputStreamReader urlReader = new InputStreamReader(new URL("http://stream.tilos.hu/json.xsl").openStream())) {
             IcecastResult icecastResult = gson.fromJson(urlReader, IcecastResult.class);
 
             List<String> streams = icecastResult.getIcestats().getSource().stream()
@@ -23,6 +25,7 @@ public class StatusService {
                     .map(source -> source.substring(source.lastIndexOf('/') + 1))
                     .filter(t -> !t.contains("digital"))
                     .filter(t -> !t.contains("tordas"))
+                    .filter(t -> !t.contains("csaka"))
                     .filter(t -> !t.contains("analog"))
                     .filter(t -> !t.contains("test"))
                     .filter(t -> !t.contains("Atesz"))
