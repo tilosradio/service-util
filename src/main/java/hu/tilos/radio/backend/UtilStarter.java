@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @SpringBootApplication
 @EnableEurekaClient
-@EnableHystrix
 public class UtilStarter {
 
     private static final Logger LOG = LoggerFactory.getLogger(UtilStarter.class);
