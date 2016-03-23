@@ -16,7 +16,7 @@ public class ComponentController {
     @Inject
     private DiscoveryClient discoveryClient;
 
-    
+
     @RequestMapping(value = "api/v1/util/components")
     public List<ServiceInfo> approve() {
         List<ServiceInfo> result = new ArrayList<>();
