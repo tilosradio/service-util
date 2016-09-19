@@ -25,6 +25,7 @@ public class StatusService {
                     .map(source -> source.substring(source.lastIndexOf('/') + 1))
                     .filter(t -> !t.contains("digital"))
                     .filter(t -> !t.contains("tordas"))
+                    .filter(t -> !t.contains("mese"))
                     .filter(t -> !t.contains("csaka"))
                     .filter(t -> !t.contains("analog"))
                     .filter(t -> !t.contains("test"))
